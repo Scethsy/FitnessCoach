@@ -2,6 +2,59 @@
 //A program that creates a health fitness program with tweaks according to specifications.
 import java.util.Scanner;
 
+class InputValidation {
+    public static int inputValidation(int min, int max) {
+        Scanner scanner = new Scanner(System.in);
+        int x;
+
+        while (true) {
+            if (scanner.hasNextInt()) {
+                x = scanner.nextInt();
+                if (x < min || x > max) {
+                    System.out.println ("Error! Invalid input. Please enter a number from the choices ("+min+"-"+max+") only.");
+                } else {
+                    return x;
+                }
+            } else {
+                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
+                scanner.next();
+            }
+        }
+    }
+    public static int inputValidationNoParameter() {
+        Scanner scanner = new Scanner(System.in);
+        int x;
+
+        while (true) {
+            if (scanner.hasNextInt()) {
+                x = scanner.nextInt();
+                return x;
+            } else {
+                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
+                scanner.next();
+            }
+        }
+    }
+    public static int inputValidationDouble() {
+        Scanner scanner = new Scanner(System.in);
+        double x;
+
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                x = scanner.nextDouble();
+                if (x < 0) {
+                    System.out.println ("Error! Invalid input. Please enter a valid positive value.");
+                } else {
+                    return x;
+                }
+            } else {
+                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
+                scanner.next();
+            }
+        }
+    }
+}
+
 public class FitnessCoach {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
@@ -16,26 +69,26 @@ public class FitnessCoach {
         //Inputs from User
         System.out.println("(Please Provide Necessary Information for accurate results.)");
         System.out.println("What is your age: ");
-        int age = scanner.nextInt();
+        int age = InputValidation.inputValidation(1, 120);
         System.out.println("What is your weight(kg): ");
-        double weight = scanner.nextInt();
+        double weight = InputValidation.inputValidationDouble();
         System.out.println("What is your height(cm): ");
-        double height = scanner.nextInt();
+        double height = InputValidation.inputValidationDouble();
 
         System.out.println("What is your fitness goal? Please indicate your answer by the number beside them. ");
         System.out.printf("Choices(1-3): %n 1. Lose Weight %n 2. Build %n 3. Maintain %n");
-        int goal = scanner.nextInt();
+        int goal = InputValidation.inputValidation(1, 3);
         System.out.println("Do you have any Dietary Restrictions? Please indicate your answer by the number beside them.");
         System.out.printf("Choices(1-6): %n 1. None %n 2. Vegan %n 3. Vegetarian %n 4. Pescatarian %n 5. Gluten-free %n 6. Keto %n");
-        int restriction = scanner.nextInt();
+        int restriction = InputValidation.inputValidation(1, 6);
         System.out.println("How much time are you free for physical activity? (State in hours per week only) ");
-        int exercise_time = scanner.nextInt();
+        int exercise_time = InputValidation.inputValidationNoParameter();
         System.out.println("Enter your preferred Workout Intensity. ");
         System.out.printf("Choices(1-3): %n 1. Low %n 2. Moderate %n 3. High %n");
-        int exercise_intensity = scanner.nextInt();
+        int exercise_intensity = InputValidation.inputValidation(1, 3);
         System.out.println("Enter your preferred Workout Environment. ");
         System.out.printf("Choices(1-3): %n 1. Gym %n 2. Home %n 3. Outdoor %n");
-        int exercise_place = scanner.nextInt();
+        int exercise_place = InputValidation.inputValidation(1, 3);
 
         System.out.println("\nCalculating Results... \n");
         /* Legend 
@@ -104,10 +157,10 @@ public class FitnessCoach {
                 reco_loc = "Body-weight exercises and yoga";
                 break;
             case 3: //Outdoor
-                reco_loc = ".";
+                reco_loc = "Running and outdoor activities";
                 break;
             default:
-                System.out.println("Running and outdoor activities");
+                System.out.println("Something went wrong if you see this");
                 break;
         }
         //Exercise Intensity
