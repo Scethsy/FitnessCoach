@@ -3,8 +3,7 @@
 import java.util.Scanner;
 
 class InputValidation {
-    public static int inputValidation(int min, int max) {
-        Scanner scanner = new Scanner(System.in);
+    public static int inputValidation(Scanner scanner, int min, int max) {
         int x;
 
         while (true) {
@@ -21,8 +20,7 @@ class InputValidation {
             }
         }
     }
-    public static int inputValidationNoParameter() {
-        Scanner scanner = new Scanner(System.in);
+    public static int inputValidationNoParameter(Scanner scanner) {
         int x;
 
         while (true) {
@@ -35,20 +33,19 @@ class InputValidation {
             }
         }
     }
-    public static int inputValidationDouble() {
-        Scanner scanner = new Scanner(System.in);
+    public static double inputValidationDouble(Scanner scanner) {
         double x;
 
         while (true) {
             if (scanner.hasNextDouble()) {
                 x = scanner.nextDouble();
                 if (x < 0) {
-                    System.out.println ("Error! Invalid input. Please enter a valid positive value.");
+                    System.out.println ("Error! Invalid input. Please enter a valid positive value only.");
                 } else {
                     return x;
                 }
             } else {
-                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
+                System.out.println("Error! Invalid input. Please enter a valid numeric number only.");
                 scanner.next();
             }
         }
@@ -69,26 +66,26 @@ public class FitnessCoach {
         //Inputs from User
         System.out.println("(Please Provide Necessary Information for accurate results.)");
         System.out.println("What is your age: ");
-        int age = InputValidation.inputValidation(1, 120);
+        int age = InputValidation.inputValidation(scanner, 1, 120);
         System.out.println("What is your weight(kg): ");
-        double weight = InputValidation.inputValidationDouble();
+        double weight = InputValidation.inputValidationDouble(scanner);
         System.out.println("What is your height(cm): ");
-        double height = InputValidation.inputValidationDouble();
+        double height = InputValidation.inputValidationDouble(scanner);
 
         System.out.println("What is your fitness goal? Please indicate your answer by the number beside them. ");
         System.out.printf("Choices(1-3): %n 1. Lose Weight %n 2. Build %n 3. Maintain %n");
-        int goal = InputValidation.inputValidation(1, 3);
+        int goal = InputValidation.inputValidation(scanner, 1, 3);
         System.out.println("Do you have any Dietary Restrictions? Please indicate your answer by the number beside them.");
         System.out.printf("Choices(1-6): %n 1. None %n 2. Vegan %n 3. Vegetarian %n 4. Pescatarian %n 5. Gluten-free %n 6. Keto %n");
-        int restriction = InputValidation.inputValidation(1, 6);
+        int restriction = InputValidation.inputValidation(scanner, 1, 6);
         System.out.println("How much time are you free for physical activity? (State in hours per week only) ");
-        int exercise_time = InputValidation.inputValidationNoParameter();
+        int exercise_time = InputValidation.inputValidationNoParameter(scanner);
         System.out.println("Enter your preferred Workout Intensity. ");
         System.out.printf("Choices(1-3): %n 1. Low %n 2. Moderate %n 3. High %n");
-        int exercise_intensity = InputValidation.inputValidation(1, 3);
+        int exercise_intensity = InputValidation.inputValidation(scanner, 1, 3);
         System.out.println("Enter your preferred Workout Environment. ");
         System.out.printf("Choices(1-3): %n 1. Gym %n 2. Home %n 3. Outdoor %n");
-        int exercise_place = InputValidation.inputValidation(1, 3);
+        int exercise_place = InputValidation.inputValidation(scanner, 1, 3);
 
         System.out.println("\nCalculating Results... \n");
         /* Legend 
