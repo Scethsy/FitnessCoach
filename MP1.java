@@ -2,34 +2,30 @@
 //A program that creates a health fitness program with tweaks according to specifications.
 import java.util.Scanner;
 
-public class Input_Validation (Scanner scanner, int &x) {
-
-}
-
-public class COR_T1 {
+public class FitnessCoach {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         //Health Condition Checker
-        System.out.print("Do you have any existing health conditions? (yes/no): ");
+        System.out.print("Do you have any existing health conditions? yes/no: ");
         String healthConditionInput = scanner.nextLine().trim().toLowerCase();
         if (healthConditionInput.equals("yes")) {
             System.out.println("\nDue to existing health conditions, it is important to consult a healthcare professional before starting any fitness practices, Safety is a number one priority.");
             scanner.close();
-            return 0; // Exit
+            return; // Exit
         }
         //Inputs from User
-        System.out.println("(Please Provide Necessary Information for accurate results.)")
+        System.out.println("(Please Provide Necessary Information for accurate results.)");
         System.out.println("What is your age: ");
         int age = scanner.nextInt();
         System.out.println("What is your weight(kg): ");
-        double age = scanner.nextInt();
+        double weight = scanner.nextInt();
         System.out.println("What is your height(cm): ");
-        double age = scanner.nextInt();
+        double height = scanner.nextInt();
 
         System.out.println("What is your fitness goal? Please indicate your answer by the number beside them. ");
         System.out.printf("Choices(1-3): %n 1. Lose Weight %n 2. Build %n 3. Maintain %n");
         int goal = scanner.nextInt();
-        System.out.println("Do you have any Dietary Restrictions? Please indicate your answer by the number beside them.")
+        System.out.println("Do you have any Dietary Restrictions? Please indicate your answer by the number beside them.");
         System.out.printf("Choices(1-6): %n 1. None %n 2. Vegan %n 3. Vegetarian %n 4. Pescatarian %n 5. Gluten-free %n 6. Keto %n");
         int restriction = scanner.nextInt();
         System.out.println("How much time are you free for physical activity? (State in hours per week only) ");
@@ -53,7 +49,7 @@ public class COR_T1 {
        //BMI
        double heightM = height/100;
        String bmi_class = "";
-       double bmi = weight / (heightM*heightM)
+       double bmi = weight / (heightM*heightM);
        if (bmi < 18.5) {
             bmi_class = "Underweight";
        } else if (bmi < 25) {
@@ -75,7 +71,7 @@ public class COR_T1 {
         String reco = "";
         switch (goal) {
             case 1: //Lose
-                if (bmi =< 25) {
+                if (bmi <= 25) {
                     reco = "Intense cardio and strength training is suggested";
                     calories -= 500;
                 } else {
@@ -83,12 +79,12 @@ public class COR_T1 {
                     calories -= 250;
                 } break;
             case 2: //Build
-                if (time > 7) {
+                if (exercise_time > 7) {
                     reco = "Heavy weight training with minimal cardio is advised";
                     calories += 500;
                 } else {
                     reco = "Moderate weight training with some cardio is recommended";
-                    if (time < 7) {
+                    if (exercise_time < 7) {
                         calories -= 250;
                     }
                 } break;
@@ -150,26 +146,26 @@ public class COR_T1 {
         String reco_dietary = "";
         switch (restriction) {
             case 1://None
-                reco_dietary = "Focuses on lean meats, fish, whole grains, and vegetables. Also encourages a balance of healthy fats, adequate hydration, and limited 
-                                processed foods and sugars";
+                reco_dietary = "Focuses on lean meats, fish, whole grains, and vegetables. Also encourages a balance of healthy fats, adequate hydration, and limited" +
+                                "processed foods and sugars";
                 break;
             case 2://Vegan
                 reco_dietary = "Focuses on plant-based proteins, whole grains, ample vegetables, fortified foods to counter possible nutrient deficiencies and plant-based calcium sources";
                 break;
             case 3://Vegetarian
-                reco_dietary = "Focuses dairy and eggs for protein, whole grains and vegetables, now include recommendations onsourcing B12 either through fortified foods or supplements. 
-                                Additionally, providesguidance on getting Omega-3 fatty acids from non-fish sources like walnuts and flaxseeds";
+                reco_dietary = "Focuses dairy and eggs for protein, whole grains and vegetables, now include recommendations onsourcing B12 either through fortified foods or supplements."+ 
+                                "Additionally, providesguidance on getting Omega-3 fatty acids from non-fish sources like walnuts and flaxseeds";
                 break;
             case 4://Pescatarian
                 reco_dietary = " Focuses on fish as the primary protein source. Recommends fatty fish for Omega-3s, and also includes vegetarian proteins, whole grains, and vegetables";
                 break;
             case 5://Gluten-free
-                reco_dietary = "Emphasizes foods naturally free from gluten, cautions about potential cross-contamination in manufacturing, and encourages whole, unprocessed foods for 
-                                nutrient adequacy";
+                reco_dietary = "Emphasizes foods naturally free from gluten, cautions about potential cross-contamination in manufacturing, and encourages whole, unprocessed foods for"+ 
+                                "nutrient adequacy";
                 break;
             case 6://Keto
-                reco_dietary = "Emphasizes Low carb, highfat dietary recommendation. Focuses on meats, fatty fish, eggs, butter and cream, cheese, nuts and seeds, healthy oils, avocados, and low-carb 
-                                vegetables. Advises against sugar and grains";
+                reco_dietary = "Emphasizes Low carb, highfat dietary recommendation. Focuses on meats, fatty fish, eggs, butter and cream, cheese, nuts and seeds, healthy oils, avocados,"+ 
+                                "and low-carb vegetables. Advises against sugar and grains";
                 break;
             default:
                 System.out.println("Something went wrong if you see this");
@@ -178,7 +174,7 @@ public class COR_T1 {
 
         //Output
         System.out.println("----FitnessCoach's Plan----");
-        System.out.printf("BMI: %.2f %t BMI Category: %s %n", bmi, bmi_class);
+        System.out.printf("BMI: %.2f \t BMI Category: %s %n", bmi, bmi_class);
         System.out.println("Recommended Daily Calories: "+ calories);
         System.out.printf("Recommended Daily Water Intake: %.1f liters %n", water);
 
