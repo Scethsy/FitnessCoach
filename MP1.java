@@ -136,7 +136,7 @@ public class COR_T1 {
                 }
                 break;
             default:
-                System.out.println("Running and outdoor activities");
+                System.out.println("Something went wrong if you see this");
                 break;
         }
         /*Dietary Conditions 
@@ -150,27 +150,45 @@ public class COR_T1 {
         String reco_dietary = "";
         switch (restriction) {
             case 1://None
-                
+                reco_dietary = "Focuses on lean meats, fish, whole grains, and vegetables. Also encourages a balance of healthy fats, adequate hydration, and limited 
+                                processed foods and sugars";
                 break;
             case 2://Vegan
-
+                reco_dietary = "Focuses on plant-based proteins, whole grains, ample vegetables, fortified foods to counter possible nutrient deficiencies and plant-based calcium sources";
                 break;
             case 3://Vegetarian
-
+                reco_dietary = "Focuses dairy and eggs for protein, whole grains and vegetables, now include recommendations onsourcing B12 either through fortified foods or supplements. 
+                                Additionally, providesguidance on getting Omega-3 fatty acids from non-fish sources like walnuts and flaxseeds";
                 break;
             case 4://Pescatarian
-
+                reco_dietary = " Focuses on fish as the primary protein source. Recommends fatty fish for Omega-3s, and also includes vegetarian proteins, whole grains, and vegetables";
                 break;
             case 5://Gluten-free
-
+                reco_dietary = "Emphasizes foods naturally free from gluten, cautions about potential cross-contamination in manufacturing, and encourages whole, unprocessed foods for 
+                                nutrient adequacy";
                 break;
             case 6://Keto
-
+                reco_dietary = "Emphasizes Low carb, highfat dietary recommendation. Focuses on meats, fatty fish, eggs, butter and cream, cheese, nuts and seeds, healthy oils, avocados, and low-carb 
+                                vegetables. Advises against sugar and grains";
                 break;
             default:
-                System.out.println("Running and outdoor activities");
+                System.out.println("Something went wrong if you see this");
                 break;
         }
+
+        //Output
+        System.out.println("----FitnessCoach's Plan----");
+        System.out.printf("BMI: %.2f %t BMI Category: %s %n", bmi, bmi_class);
+        System.out.println("Recommended Daily Calories: "+ calories);
+        System.out.printf("Recommended Daily Water Intake: %.1f liters %n", water);
+
+        System.out.println("----Exercise Routine Plan----");
+        System.out.println("* "+reco);
+        System.out.println("* "+reco_loc);
+
+        System.out.println("----Diet Plan----");
+        System.out.println("* "+ reco_dietary);
+        System.out.println("\n(Please do note that these are general recommendations. For a more precise plan for your health you may consider consulting with certified professionals.)");
 
         scanner.close();
     }
