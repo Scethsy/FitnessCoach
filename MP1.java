@@ -150,7 +150,7 @@ public class COR_T1 {
         String reco_dietary = "";
         switch (restriction) {
             case 1://None
-
+                
                 break;
             case 2://Vegan
 
