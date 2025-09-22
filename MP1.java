@@ -2,56 +2,6 @@
 //A program that creates a health fitness program with tweaks according to specifications.
 import java.util.Scanner;
 
-class InputValidation {
-    public static int inputValidation(Scanner scanner, int min, int max) {
-        int x;
-
-        while (true) {
-            if (scanner.hasNextInt()) {
-                x = scanner.nextInt();
-                if (x < min || x > max) {
-                    System.out.println ("Error! Invalid input. Please enter a number from the choices ("+min+"-"+max+") only.");
-                } else {
-                    return x;
-                }
-            } else {
-                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
-                scanner.next();
-            }
-        }
-    }
-    public static int inputValidationNoParameter(Scanner scanner) {
-        int x;
-
-        while (true) {
-            if (scanner.hasNextInt()) {
-                x = scanner.nextInt();
-                return x;
-            } else {
-                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
-                scanner.next();
-            }
-        }
-    }
-    public static double inputValidationDouble(Scanner scanner) {
-        double x;
-
-        while (true) {
-            if (scanner.hasNextDouble()) {
-                x = scanner.nextDouble();
-                if (x < 0) {
-                    System.out.println ("Error! Invalid input. Please enter a valid positive value only.");
-                } else {
-                    return x;
-                }
-            } else {
-                System.out.println("Error! Invalid input. Please enter a valid numeric number only.");
-                scanner.next();
-            }
-        }
-    }
-}
-
 public class FitnessCoach {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
@@ -237,5 +187,55 @@ public class FitnessCoach {
         System.out.println("\n(Please do note that these are general recommendations. For a more precise plan for your health you may consider consulting with certified professionals.)");
 
         scanner.close();
+    }
+}
+
+class InputValidation {
+    public static int inputValidation(Scanner scanner, int min, int max) {
+        int x;
+
+        while (true) {
+            if (scanner.hasNextInt()) {
+                x = scanner.nextInt();
+                if (x < min || x > max) {
+                    System.out.println ("Error! Invalid input. Please enter a number from the choices ("+min+"-"+max+") only.");
+                } else {
+                    return x;
+                }
+            } else {
+                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
+                scanner.next();
+            }
+        }
+    }
+    public static int inputValidationNoParameter(Scanner scanner) {
+        int x;
+
+        while (true) {
+            if (scanner.hasNextInt()) {
+                x = scanner.nextInt();
+                return x;
+            } else {
+                System.out.println("Error! Invalid input. Please enter a valid integer number only.");
+                scanner.next();
+            }
+        }
+    }
+    public static double inputValidationDouble(Scanner scanner) {
+        double x;
+
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                x = scanner.nextDouble();
+                if (x < 0) {
+                    System.out.println ("Error! Invalid input. Please enter a valid positive value only.");
+                } else {
+                    return x;
+                }
+            } else {
+                System.out.println("Error! Invalid input. Please enter a valid numeric number only.");
+                scanner.next();
+            }
+        }
     }
 }
